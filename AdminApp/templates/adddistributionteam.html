@@ -1,0 +1,152 @@
+{% extends 'adminBasic2.html' %}
+{% block content %}
+{% load static %}
+            
+<div class="main-content container-fluid">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Assign For PickUP </h3>
+                
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>Assign For Distribution Team</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+   
+ <section id="basic-horizontal-layouts">
+    <div class="row match-height">
+        <div class="col-md-6 col-12">
+        <div class="card">
+          
+            <div class="card-content">
+            <div class="card-body">
+                <form class="form form-horizontal" method="POST" action="/assignd/{{waste.id}}/" name="assignpick">
+                    {% csrf_token %}
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="font-weight-bold">WASTE-ID</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <input type="text" id="first-name" class="form-control" value={{waste.id}}>
+                                </div>
+                                <div class="col-md-4">
+                                        <label class="font-weight-bold">DONATED BY</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                        <input type="text" id="first-name" class="form-control" value={{waste.donatedBy}} disabled>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="font-weight-bold">PICKUPBOY-ID</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <input type="text" id="pickupBoyID" class="form-control" name='id'>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="font-weight-bold">USERNAME</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                        <input type="text" id="username" class="form-control" name='username'>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="font-weight-bold">PICKUPBOY-EMAIL</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                        <input type="email" id="email" class="form-control" name='mail'>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="font-weight-bold">ADDRESS</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                        <input type="text" id="address" class="form-control" name='address'>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="font-weight-bold">ASSIGN DATE</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <input type="date" id="date" class="form-control" name="date" >
+                                </div>
+                            
+                                <div class="col-md-4">
+                                    <label class="font-weight-bold">PICK-UP BAG</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <input type="number" id="quantity" class="form-control" name="quantity" value={{waste.quantity}}>
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="exampleFormControlTextarea1" class="font-weight-bold">CONTACT</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <input type='number' class="form-control " id="contact"  name='contact' >
+                                    
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                    <label for="company-column" class="font-weight-bold">Password</label>
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        class="form-control"
+                                        name="pass1"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                <label for="company-column" class="font-weight-bold">Confirm Password</label>
+                                <input
+                                    type="password"
+                                    id="cpassword"
+                                    class="form-control"
+                                    name="pass2"
+                                />
+                                </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                    <label for="company-column" class="font-weight-bold">Upload Profile Pic</label>
+                                    <input
+                                        type="file"
+                                        id="company-column"
+                                        class="form-control"
+                                        name="pic"
+                                    />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                    <label for="username-column" class="font-weight-bold">User Type</label>
+                                        <select id="username-column" class="form-control" name='userType'>
+                                        <option value='Doner'>Doner</option>
+                                        <option value='staff'>staff</option>
+            
+                                        </select>
+                                        
+                                    </div>
+                                </div>
+                        
+                        
+                                <div class="col-md-12 d-flex justify-content-end mt-2">
+                                    <input type="submit" class="btn btn-primary w-100" value='Assign'>
+                            
+                                </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

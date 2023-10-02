@@ -1,0 +1,74 @@
+{% extends 'publicBasic.html' %}
+{%block content %}
+{%load static%}
+	
+			<section class="contact-page-area section-gap">
+				<div class="container">
+					<h1 class="mb-10"><center>Contact Us</center></h1><br>
+					<div class="row">
+						<div class="map-wrap" style="width:100%; height: 445px;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d239486.63419426617!2d85.68036422346474!3d20.30115044878436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909d2d5170aa5%3A0xfc580e2b68b33fa8!2sBhubaneswar%2C%20Odisha!5e0!3m2!1sen!2sin!4v1611285636930!5m2!1sen!2sin"
+							style="width:100%; height: 445px;"></iframe></div>
+						<div class="col-lg-4 d-flex flex-column address-wrap">
+							<div class="single-contact-address d-flex flex-row">
+								<div class="icon">
+									<span class="lnr lnr-home"></span>
+								</div>
+								<div class="contact-details">
+									<h5>Patia, Bhubaneswar</h5>
+									<p>
+										242,District Center Odisha 751016
+									</p>
+								</div>
+							</div>
+							<div class="single-contact-address d-flex flex-row">
+								<div class="icon">
+									<span class="lnr lnr-phone-handset"></span>
+								</div>
+								<div class="contact-details">
+									<h5>+91 18009865562</h5>
+									<p>Mon to Fri 9am to 6 pm</p>
+								</div>
+							</div>
+							<div class="single-contact-address d-flex flex-row">
+								<div class="icon">
+									<span class="lnr lnr-envelope"></span>
+								</div>
+								<div class="contact-details">
+									<h5>support@zerowaste.com</h5>
+									<p>Send us your query anytime!</p>
+								</div>
+							</div>														
+						</div>
+						<div class="col-lg-8">
+							<form class="form-area contact-form text-right" id="myForm" action="/public-contact/" method="POST" name='contactform'>
+								{%csrf_token%}
+								{%if sent%}
+								Email sent successfully
+								{%endif%}
+								<div class="row">	
+									<div class="col-lg-6 form-group">
+										<input id="name" name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
+									
+										<input id="email" name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
+
+										<input id="subject" name="subject" placeholder="Enter subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter subject'" class="common-input mb-20 form-control" required="" type="text">
+									</div>
+									<div class="col-lg-6 form-group">
+										<textarea class="common-textarea form-control" id="message" name="message" placeholder="Enter Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Messege'" required=""></textarea>				
+									</div>
+									<div class="col-lg-12">
+										<div class="alert-msg" style="text-align: left;"></div>
+																					
+									</div>
+									<input type='submit' class="genric-btn primary" style="float : left;" value='Send message'>
+								</div>
+							</form>	
+							
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End contact-page Area -->
+
+			<!-- start footer Area -->		
+			{% endblock content %}

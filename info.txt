@@ -1,0 +1,57 @@
+Instructions
+open cmd on the project folder path.
+
+python -m venv venv
+Set-ExecutionPolicy Unrestricted -Scope Process
+venv\scripts\activate
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+python -m venv venv
+venv\scripts\activate
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+pip install pipreqs
+pipreqs
+
+For Admin Account, please create one with superuser!
+python manage.py createsuperuser
+id : root
+pass : root
+Email address: root@gmail.com
+
+
+Admin
+Username : admin@admin.com
+Email address: root@admin.com
+Password: admin@123
+
+
+####################################
+When u run the server 
+
+use the cmd only 
+
+
+open cmd on the project folder path.
+venv\scripts\activate
+python manage.py runserver
+
+localhost link copy and pest the broswer 
+http://127.0.0.1:8000/
+
+SUpper Admin link 
+http://127.0.0.1:8000/admin
+
+Admin ID AND PASS
+http://127.0.0.1:8000/login/
+id : root
+pass : root
+Email address: root@gmail.com

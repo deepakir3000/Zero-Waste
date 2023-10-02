@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="zxx" class="no-js">
+
+<head>
+  <!-- Mobile Specific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="{% static 'publicstaticimg/fav.png' %}">
+  <!-- Author Meta -->
+  <meta name="author" content="colorlib">
+  <!-- Meta Description -->
+  <meta name="description" content="">
+  <!-- Meta Keyword -->
+  <meta name="keywords" content="">
+  <!-- meta character set -->
+  <meta charset="UTF-8">
+  <!-- Site Title -->
+  <title>Waste Mangement</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+  <!--
+        CSS
+        ============================================= -->
+  <link rel="stylesheet" href="{% static 'publicstatic/css/linearicons.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/nice-select.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/owl.carousel.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/ws.css' %}">
+  <link rel="stylesheet" href="{% static 'publicstatic/css/style.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js'></script>
+  <style>
+      
+      #name-error,
+      #email-error,
+      #desc-error,
+      #mobile-error,#message-error,
+      #subject-error
+      {
+          color: red;
+          font-weight: bold;
+          font-size: smaller;
+      }
+      
+      .form-control.error {
+          border: solid 1px #ff0000;
+      }
+  </style>
+
+</head>
+
+<body>
+  <header id="header" id="home" style="background-color:black;">
+
+
+    <div class="container main-menu">
+      <div class="row align-items-center justify-content-between d-flex">
+        <div id="logo">
+          <a href=""><img src="{% static 'publicstatic/img/zero__2_-removebg-preview.png' %}" alt="" title=""
+              style="height:50px;" /></a>
+        </div>
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/public-about/" >About</a></li>
+            <li><a href="/public-service/" >Services</a></li>
+            <li><a href="/public-feedback/" >FeedBack</a></li>
+            <li><a href="/public-contact/" >ContactUs</a></li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout/"> <button type="submit" class="loginbtn">Logout</button></a>
+              <a class="nav-link" href="/userprofile/"><button type="submit" class="signupbtn">My Profile</button></a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/login/"> <button type="submit" class="loginbtn">Login</button></a>
+              <a class="nav-link" href="/register/"><button type="submit" class="signupbtn" >Sign Up</button></a>
+            </li>
+            {% endif %}
+           
+        </nav><!-- #nav-menu-container -->
+      </div>
+    </div>
+  </header><!-- #header -->
+  
+  {% block content %}
+  {% endblock content %}
+  <footer class="footer-area section-gap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h4>Top Products</h4>
+            <ul>
+              <li><a href="#">Managed Website</a></li>
+              <li><a href="#">Manage Reputation</a></li>
+              <li><a href="#">Power Tools</a></li>
+              <li><a href="#">Marketing Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h4>Quick links</h4>
+            <ul>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Brand Assets</a></li>
+              <li><a href="#">Investor Relations</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h4>Features</h4>
+            <ul>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Brand Assets</a></li>
+              <li><a href="#">Investor Relations</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Guides</a></li>
+              <li><a href="#">Research</a></li>
+              <li><a href="#">Experts</a></li>
+              <li><a href="#">Agencies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4  col-md-6 col-sm-6">
+          <div class="single-footer-widget">
+            <h4>Newsletter</h4>
+            <p>Stay update with our latest</p>
+            <div class="" id="mc_embed_signup">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom row align-items-center justify-content-between">
+        <p class="footer-text m-0 col-lg-6 col-md-12">
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;
+          <script>document.write(new Date().getFullYear());</script> All rights reserved.
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+		
+		<p class="footer-text m-0 col-lg-6 col-md-12">
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          This is Developed By Javaenterpriser.com || www.zerowaste.com ||
+        </p>
+		
+		
+        <div class="col-lg-6 col-sm-12 footer-social">
+          <a href="http://127.0.0.1:8000/"><i class="fa fa-facebook"></i></a>
+          <a href="http://127.0.0.1:8000/"><i class="fa fa-twitter"></i></a>
+          <a href="http://127.0.0.1:8000/"><i class="fa fa-dribbble"></i></a>
+          <a href="http://127.0.0.1:8000/"><i class="fa fa-behance"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End footer Area -->
+
+
+  <script src="{% static 'publicstatic/js/vendor/jquery-2.2.4.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="{% static 'publicstatic/js/vendor/bootstrap.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+  <script src="{% static 'publicstatic/js/easing.min.js' %}"></script>
+  <script src="{% static 'publicstatic/js/hoverIntent.js' %}"></script>
+  <script src="{% static 'publicstatic/js/superfish.min.js' %}"></script>
+  <script src="{% static 'publicstatic/js/jquery.ajaxchimp.min.js' %}"></script>
+  <script src="{% static 'publicstatic/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'publicstatic/js/jquery.tabs.min.js' %}"></script>
+  <script src="{% static 'publicstatic/js/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'publicstatic/js/owl.carousel.min.js' %}"></script>
+ <!-- <script src="{% static 'publicstatic/js/mail-script.js' %}"></script>-->
+  <script src="{% static 'publicstatic/js/main.js' %}"></script>
+  <script>
+    $(document).ready(function(){
+    // Wait for the DOM to be ready
+            
+            // Initialize form validation on the registration form.
+            // It has the name attribute "registration"
+            $("form[name='feedbackform']").validate({
+                // Specify validation rules
+                rules: {
+                // The key name on the left side is the name attribute
+                // of an input field. Validation rules are defined
+                // on the right side
+                feedback: {
+                        required:true,
+                    },
+                    name: {
+                        required: true
+                    },
+                    mobile: {
+                        required: true
+                    
+                    },
+                    email: {
+                        required: true
+                    
+                    },
+                
+                },
+                // Specify validation error messages
+                messages: {
+                    name: "Please Enter Your Name !",
+                    feedback: "Provide some feedback to Submit !",
+                    mobile : "Provide a valid Mobile No !",
+                    email : "Provide a valid Email ID !",
+                    
+                },
+                // Make sure the form is submitted to the destination defined
+                // in the "action" attribute of the form when valid
+                
+            });
+            $("form[name='contactform']").validate({
+                // Specify validation rules
+                rules: {
+                // The key name on the left side is the name attribute
+                // of an input field. Validation rules are defined
+                // on the right side
+                subject: {
+                        required:true,
+                    },
+                    name: {
+                        required: true
+                    },
+                    message: {
+                        required: true
+                    
+                    },
+                    email: {
+                        required: true
+                    
+                    },
+                
+                },
+                // Specify validation error messages
+                messages: {
+                    name: "Please Enter Your Name !",
+                    subject: "Provide a subject to Submit !",
+                    message : "Provide a Message to Submit !",
+                    email : "Provide a valid Email ID !",
+                    
+                },
+                // Make sure the form is submitted to the destination defined
+                // in the "action" attribute of the form when valid
+                
+            });
+            
+})
+</script>
+</body>
+
+</html>

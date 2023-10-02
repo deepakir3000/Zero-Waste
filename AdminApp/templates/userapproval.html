@@ -1,0 +1,73 @@
+{% extends 'adminBasic2.html' %}
+{%block content %}
+{%load static%}
+            
+<div class="main-content container-fluid">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Donation Approval </h3>
+                
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/index/">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>Donation Approval</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+   
+
+<!-- Borderless table end -->
+
+<!-- Hoverable rows start -->
+<div class="row" id="table-hover-row">
+  <div class="col-12">
+    <div class="card">
+      
+      <div class="card-content">
+        <div class="card-body">
+          
+        </div>
+        <!-- table hover -->
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead>
+              <tr>
+                <th>REQUEST DATE</th>
+                <th>DONER NAME</th>
+                <th>ITEM TYPE</th>
+                <th>ITEM NAME</th>
+                <th>DONATED QUANTIYTY</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for x in status %}
+              <tr>
+                <td class="text-bold-500">{{x.created_at|date:"D, d M, Y"}}</td>
+                <td class="text-bold-500">{{x.donatedBy}}</td>
+                <td>{{x.wasteType}}</td>
+                <td>{{x.description}}</td>
+                <td>{{x.quantity}}</td>
+                <td><a href ="/create-track/{{x.id}}" ><span class="btn btn-success">Approve</span></a>
+                    <a href ="/rejectwaste/{{x.id}}" ><span class="btn btn-danger">Reject</button></span></a>
+                </td>
+                    
+              
+            </tr>
+            {%endfor%}
+            
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Hoverable rows end -->
+{% endblock content %}

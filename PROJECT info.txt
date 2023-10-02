@@ -1,0 +1,20 @@
+Instructions
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+For Admin Account, please create one with superuser!
+python manage.py createsuperuser
+id : root
+pass : root
+Email address: root@gmail.com
+
+Admin 
+http://127.0.0.1:8000/admin/
+id root
+pass root
+
+user
+id Avhi07
+pass 123456

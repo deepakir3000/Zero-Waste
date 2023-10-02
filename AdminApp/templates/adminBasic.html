@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Voler Admin Dashboard</title>
+    
+    <link rel="stylesheet" href="{% static 'adminstatic/assets/css/bootstrap.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'adminstatic/assets/vendors/chartjs/Chart.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'adminstatic/assets/vendors/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" href="{% static 'adminstatic/assets/css/app.css' %}">
+    <link rel="shortcut icon" href="{% static 'adminstatic/assets/images/favicon.svg' %}" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js'></script>
+    <style>
+        #description-error,#waste_quantity-error,#image-error,#oldpass-error,#newpass-error,#cpass-error{
+            color: red;
+            font-weight: bold;
+            font-size: smaller;
+        }
+        
+        .form-control.error {
+            border: solid 1px #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+    <div class="sidebar-header">
+        <img src="{% static 'adminstatic/assets/images/logo1.png' %}" alt="" srcset="">
+    </div>
+    <div class="sidebar-menu">
+        <ul class="menu">
+            
+            <li class="sidebar-item active ">
+                    <a href="/admin-index/" class='sidebar-link'>
+                        <i data-feather="home" width="20"></i> 
+                        <span>Dashboard</span>
+                    </a>
+                    
+                </li>
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="triangle" width="20"></i> 
+                        <span>Donate Type</span>
+                    </a>
+                    
+                    <ul class="submenu ">
+                        
+                        <li>
+                            <a href="/collect-food/">Food</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/collect-cloth/">Cloth</a>
+                        </li>
+                        
+                 </ul>
+                    
+              <li class="sidebar-item  ">
+                    <a href="/donatehistory/" class='sidebar-link'>
+                        <i data-feather="layout" width="20"></i> 
+                        <span>Donate History</span>
+                    </a>
+                    
+                </li>
+                {% if request.user.is_superuser %}
+                <li class="sidebar-item  ">
+                    <a href="/userapproval/" class='sidebar-link'>
+                        <i data-feather="layout" width="20"></i> 
+                        <span>Donate Request</span>
+                    </a>
+                    
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                <li class="sidebar-item  ">
+                    <a href="/alluser/" class='sidebar-link'>
+                        <i data-feather="layout" width="20"></i> 
+                        <span>All User</span>
+                    </a>
+                    
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                <li class="sidebar-item  ">
+                    <a href="/pickupteamprofile/" class='sidebar-link'>
+                        <i data-feather="layout" width="20"></i> 
+                        <span>Assign For Pick-Up</span>
+                    </a>
+                    
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                <li class="sidebar-item  ">
+                    <a href="/stockupdate/" class='sidebar-link'>
+                        <i data-feather="layout" width="20"></i> 
+                        <span>Stock Update</span>
+                    </a>
+                    
+                </li>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                   <li class="sidebar-item  ">
+                        <a href="/pickupteamprofile/" class='sidebar-link'>
+                            <i data-feather="layers" width="20"></i> 
+                            <span>Pick-Up Team </span>
+                        </a>
+                        
+                    </li>
+                    {% endif %}
+                    {% if request.user.is_superuser %}
+                    <li class="sidebar-item  ">
+                        <a href="/distributionteam/" class='sidebar-link'>
+                            <i data-feather="layers" width="20"></i> 
+                            <span>Distribution Team </span>
+                        </a>
+                        
+                    </li>
+                    {% endif %}
+                        
+               <li class="sidebar-item  ">
+                    <a href="/track/" class='sidebar-link'>
+                        <i data-feather="layers" width="20"></i> 
+                        <span>Track</span>
+                    </a>
+                    
+                </li>
+                
+                    </ul>
+                    
+                </li>    
+    </div>
+    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+</div>
+        </div>
+        <div id="main">
+            <nav class="navbar navbar-header navbar-expand navbar-light">
+                <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex align-items-center navbar-light ml-auto">
+                        <li class="dropdown nav-icon">
+                            <a href="#" data-toggle="dropdown" class="nav-link  dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="d-lg-inline-block">
+                                    <i data-feather="bell"></i>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-large">
+                                <h6 class='py-2 px-4'>Notifications</h6>
+                                <ul class="list-group rounded-none">
+                                    <li class="list-group-item border-0 align-items-start">
+                                        <div class="avatar bg-success mr-3">
+                                            <span class="avatar-content"><i data-feather="shopping-cart"></i></span>
+                                        </div>
+                                        <div>
+                                            <h6 class='text-bold'>New Order</h6>
+                                            <p class='text-xs'>
+                                                An order made by Ahmad Saugi for product Samsung Galaxy S69
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="dropdown nav-icon mr-2">
+                            <a href="#" data-toggle="dropdown" class="nav-link  dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="d-lg-inline-block">
+                                    <i data-feather="mail"></i>
+                                </div>
+                            </a>
+                            
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <div class="avatar mr-1">
+                                    {% if request.user.userdetails.profilePicture %}
+                                    <img src={{request.user.userdetails.profilePicture.url}} alt="" srcset="">
+                                    {% else %}
+                                    <img src="{% static 'adminstatic/assets/images/avatar/avatar-s-1.png' %}" alt="" srcset="">
+                                    {% endif %}
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, {{request.user.username}}</div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="/userprofile/"><i data-feather="user"></i> Account</a>
+                                <a class="dropdown-item active" href="/changepassworduser/"><i data-feather="mail"></i>Change Password</a>
+                              
+                                <a class="dropdown-item" href="/logout/"><i data-feather="log-out"></i> Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            {% block content %}
+            {% endblock content %}
+            
+            <footer class='footer fixed-bottom bg-secondary'>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-left">
+                        <p class="text-white">2022 &copy; zerowaste.com</p>
+                    </div>
+                    <div class="float-right">
+                        <p class="text-white">Crafted with <span class='text-danger'><i data-feather="heart"></i></span> by <a class="text-white" href="http://Javaenterpriser.com">Javaenterpriser.com</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="{% static 'adminstatic/assets/js/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static 'adminstatic/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'adminstatic/assets/js/app.js' %}"></script>
+    
+    <script src="{% static 'adminstatic/assets/vendors/chartjs/Chart.min.js' %}"></script>
+    <script src="{% static 'adminstatic/assets/vendors/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'adminstatic/assets/js/pages/dashboard.js' %}"></script>
+
+    <script src="{% static 'adminstatic/assets/js/main.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+        // Wait for the DOM to be ready
+                
+                // Initialize form validation on the registration form.
+                // It has the name attribute "registration"
+                $("form[name='clothorfood']").validate({
+                    // Specify validation rules
+                    rules: {
+                    // The key name on the left side is the name attribute
+                    // of an input field. Validation rules are defined
+                    // on the right side
+                    description: {
+                        required:true,
+                    },
+                    quantity: {
+                        required: true
+                    },
+                    pic1: {
+                        required: true
+                    
+                    },
+                    
+                    },
+                    // Specify validation error messages
+                    messages: {
+                        description: "Please enter Product details!",
+                        quantity: "Please provide a amount!",
+                        pic1 : "Please provide an image!",
+                        
+                        
+                    },
+                    // Make sure the form is submitted to the destination defined
+                    // in the "action" attribute of the form when valid
+                    
+                });
+                $("form[name='changepassword']").validate({
+                    // Specify validation rules
+                    rules: {
+                    // The key name on the left side is the name attribute
+                    // of an input field. Validation rules are defined
+                    // on the right side
+                    
+                    oldpass: {
+                        required: true
+                    },
+                    pass1: {
+                        required: true
+                    },
+                    pass2: {
+                        required: true
+                    },
+                    },
+                    // Specify validation error messages
+                    messages: {
+                        oldpass: "Please enter your old password !",
+                        pass1: "Please provide a password!",
+                        pass2 : "Please provide a password!",
+                        
+                    },
+                    // Make sure the form is submitted to the destination defined
+                    // in the "action" attribute of the form when valid
+                    
+                });
+    })
+</script>
+</body>
+</html>

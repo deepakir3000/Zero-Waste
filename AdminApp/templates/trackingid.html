@@ -1,0 +1,54 @@
+
+{% extends 'adminBasic.html' %}
+{%block content %}
+{%load static%}
+            
+<div class="main-content container-fluid">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>TRACKING DETAILS</h3>
+                
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/indexadmin/">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tracking Id</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    
+              <div class="container">
+                <article class="card">
+                    <header class="card-header">Tracking </header>
+                    <div class="card-body">
+                        <h6>Order ID: 45345345435</h6>
+                        <article class="card">
+                            <div class="card-body row" style="margin-left:50px">
+                                <div class="col"> <strong>Estimated Delivery time:</strong> <br>29 May 2021 </div>
+                                <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>
+                                <div class="col"> <strong>Status:</strong> <br> Picked by the courier </div>
+                                <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
+                            </div>
+                        </article>
+                        
+                        <hr>
+                            <div class="card">
+                                <div class="track card-body row">
+                                    <div class="col step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text font-weight-bold">Order confirmed</span> </div>
+                                    <div class="col step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text font-weight-bold"> Picked by courier</span> </div>
+                                    <div class="col step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text font-weight-bold"> On the way </span> </div>
+                                    <div class="col step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text font-weight-bold">Ready for pickup</span> </div>
+                                </div>
+                            </div>
+                        <hr>
+                    </div>
+                </article>
+            </div>
+        
+{% endblock content %}

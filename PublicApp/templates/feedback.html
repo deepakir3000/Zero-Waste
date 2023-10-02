@@ -1,0 +1,90 @@
+{% extends 'publicBasic.html' %}
+{%block content %}
+{%load static%}
+<div class="bh" style="padding-top:90px;">
+		  <section class="search-course-area relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row justify-content-between align-items-center">
+						<div class="col-lg-6 col-md-6 search-course-left">
+							<h1 class="text-white">
+								FEEDBACK							</h1>
+							<p>
+								Have you come across large piles of garbage in neighbourhoods and streets and smelly waste disposal sites polluting the environment of low- and middle-income countries? Do you want to know what kind of
+sustainable solutions are appropriate to better manage waste and enhance recycling and recovery? If yes, this course is for you! This course provides you with an overview of the municipal solid waste management
+situation in low- and middle-income countries. It covers key elements of the waste management system, such as its technical, environmental, social, financial and institutional aspects. Besides understanding the
+challenges, you will be introduced to appropriate and already applied solutions through selected case studies.
+							</p>
+							<div class="row details-content">
+								<div class="col single-detials">
+									<img src="{% static 'publicstatic/img/star.png' %}">
+									<a href="#"><h4>Ratings</h4></a>		
+									<p>
+										Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+									</p>						
+								</div>
+								<div class="col single-detials">
+									<img src="{% static 'publicstatic/img/text.png' %}">
+									<a href="#"><h4>Text</h4></a>		
+									<p>
+										This course is very well designed and easy to understand because of dedicated and experience personnel who are delivering the content. Use of case study is well planned at various sections in course.
+									</p>						
+								</div>								
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 search-course-right section-gap">
+							<form class="form-wrap" action="/public-feedback/" enctype="multipart/form-data" method="POST" name='feedbackform'>
+								{%csrf_token%}
+								<h4 class="text-white pb-20 text-center mb-30">FeedBack Form</h4>		
+								<input type="text" class="form-control" id="name" name="name" placeholder="Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Name'" >
+								<input type="number" class="form-control" id='mobile' name="mobile" placeholder="Your Phone Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Phone Number'" >
+								<input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'" >
+								<div class="form-group">
+ 
+ 
+								<textarea class="form-control" id="desc" rows="5" name='feedback'>Feedback</textarea>
+ 
+</div>
+ 
+																
+								<button class="primary-btn text-uppercase">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>	
+			</section></div>
+			<!-- End search-course Area -->
+<!-- Start review Area -->
+			<section class="review-area section-gap relative" >
+				<div class="overlay "></div>
+				<div class="container" style="color: darkkhaki;">	
+				<h2><b style="color: darkgreen;">Top Reviews</b></h2>&nbsp&nbsp&nbsp&nbsp&nbsp		
+					<div class="row">
+						{% for  x in feed %}
+						<div >
+							<div class="single-review item">
+								<div class="title justify-content-start d-flex">
+									<a href="#"><h4>{{x.name}}</h4></a>
+									<div class="star">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+									</div>
+								</div>
+								<p>
+									{{x.feedback}}
+								</p>
+							</div>
+																										
+						</div>
+						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						
+						{%endfor%}
+					</div>
+				</div>	
+			</section>
+			<!-- End review Area -->	
+			
+		{% endblock content %}

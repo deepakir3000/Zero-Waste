@@ -1,0 +1,91 @@
+{% extends 'adminBasic2.html' %}
+{%block content %}
+{%load static%}
+            
+<div class="main-content container-fluid">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Edit Pickup-team </h3>
+                
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/index-admin/">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>Edit Pick-Up Team</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+   
+
+<!-- Borderless table end -->
+
+<!-- Hoverable rows start -->
+<div class="row" id="table-hover-row">
+  <div class="col-md-12">
+    <div class="card">
+      
+      <div class="card-content">
+      
+        <div class="card-body">
+          
+        </div>
+        
+        <!-- table hover -->
+        <section id="basic-vertical-layouts">
+            <div class="row match-height">
+                <div class="col-md-8 col-12">
+                <div class="card">
+                   
+                    <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-vertical" action="/editdistributionteam/{{w.id}}/" method="POST">
+                            {% csrf_token %}
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>waste-id</label>
+                                    </div>
+                                    <div class="col-md-8 form-group">
+                                        <input type="text" id="first-name" class="form-control" name='id' value={{w.id}}>
+                                    </div>
+                                <div class="col-md-4">
+                                        <label>waste-donated by</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                        <input type="text" id="first-name" class="form-control"  name='donatedBy' value={{w.donatedBy}} >
+                                </div>
+                                
+                        <div class="col-md-4">
+                            <label>QUANTITY</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                            <input type="text" id="first-name" class="form-control" name='quantity' value={{w.quantity}}>
+                    </div>
+                        <div class="col-md-4">
+                            <label>WASTE-TYPE</label>
+                    </div>
+                            <div class="col-md-8 form-group">
+                                    <input type="text" id="first-name" class="form-control" name='wasteType' value={{w.wasteType}}>
+                            </div>
+                               
+                                
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                               
+                            </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+    <!-- Hoverable rows end -->
+
+
+    {% endblock content %}

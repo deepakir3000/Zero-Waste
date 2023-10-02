@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Voler Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'adminstatic/assets/css/bootstrap.css' %}">
+    
+    <link rel="shortcut icon" href="{% static 'adminstatic/assets/images/favicon.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'adminstatic/assets/css/app.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js'></script>
+    <style>
+        #username-error,#password-error{
+            color: red;
+            font-weight: bold;
+            font-size: smaller;
+        }
+        
+        .form-control.error {
+            border: solid 1px #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="auth">
+        
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-sm-12 mx-auto">
+            <div class="card pt-4">
+                <div class="card-body">
+                    <div class="text-center mb-5">
+                        <a href='/' ><img src="{% static 'adminstatic/assets/images/logo1.png' %}" height="48" class='mb-4'></a>
+                        <h3>Login</h3>
+                       
+                    </div>
+                        {% if msg %}
+                            <p class="text-center font-weight-bold" style="color: red">{{msg}}</p>
+                        {%endif%}
+                    <form action="/login/" method="POST" name="login">
+                        {%csrf_token%}
+                        
+                        <div class="form-group position-relative has-icon-left">
+                            <label class="font-weight-bold" >Username</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" id="username" name='username'>
+                                <div class="form-control-icon">
+                                   
+                                </div>
+                            </div>
+                            
+                            <div class="form-group position-relative has-icon-left">
+                                <div class="clearfix">
+                                    <label class="font-weight-bold">Password</label>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control" id="password" name='password'>
+                                        <div class="form-control-icon">
+                                          
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                           <div class='row'>
+                                
+                                <div class="col float-right ">
+                                    <a class="font-weight-bold" href="/otpverify/">Forgot Password?</a>
+                                </div>
+                                <div class="col float-right">
+                                    <a class="font-weight-bold float-right" href="/register/">Don't have an account?</a>
+                                </div>
+                           </div>
+                           <div class="mt-4 clearfix">
+                            <button class="btn btn-success float-center w-100">Login</button>
+                            </div>
+                           
+                        </div>
+                        
+                    </form>
+                    
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <script src="{% static 'adminstatic/assets/js/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static 'adminstatic/assets/js/app.js' %}"></script>
+    
+    <script src="{% static 'adminstatic/assets/js/main.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            // Wait for the DOM to be ready
+                    
+                    // Initialize form validation on the registration form.
+                    // It has the name attribute "registration"
+                    $("form[name='login']").validate({
+                        // Specify validation rules
+                        rules: {
+                        // The key name on the left side is the name attribute
+                        // of an input field. Validation rules are defined
+                        // on the right side
+                        username: {
+                            required:true,
+                        },
+                        password: {
+                            required: true
+                        }
+                        },
+                        // Specify validation error messages
+                        messages: {
+                            username: "Please enter your UserName",
+                            password: "Please provide a password",
+                        },
+                        // Make sure the form is submitted to the destination defined
+                        // in the "action" attribute of the form when valid
+                       
+                    });
+        })
+    </script>
+
+</body>
+
+</html>

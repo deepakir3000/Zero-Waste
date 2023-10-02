@@ -1,0 +1,73 @@
+{% extends 'adminBasic2.html' %}
+{%block content %}
+{%load static%} 
+<div class="main-content container-fluid">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>User Details </h3>
+                
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/indexadmin/">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>User Details</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+   
+
+<!-- Borderless table end -->
+
+<!-- Hoverable rows start -->
+<div class="row" id="table-hover-row">
+  <div class="col-12">
+    <div class="card">
+      
+      <div class="card-content">
+        <div class="card-body">
+          
+        </div>
+        <!-- table hover -->
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead>
+              <tr>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>CONTACT NO</th>
+                <th>USER TYPE</th>
+               <th>ADDRESS</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for a in all %}
+              <tr>
+                <td class="text-bold-500">{{a.user.username}}</td>
+                <td class="text-bold-500">{{a.user.email}}</td>
+                <td>{{a.contact_No}}</td>
+                <td>{{a.userType}}</td>
+               <td>{{a.address}}</td>
+                <td>
+                    <a href ="/userdetails/{{a.id}}" ><span class="btn btn-success">View</span></a>&nbsp;
+                    <a href ="/edituser/{{a.id}}" ><span class="btn btn-danger">Edit</button></span></a>
+                </td>     
+            </tr>
+            {% endfor %}
+            
+            </tbody>
+        
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Hoverable rows end -->
+
+{% endblock content %}
